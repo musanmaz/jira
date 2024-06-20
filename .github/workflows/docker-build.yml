@@ -37,12 +37,11 @@ jobs:
             BUILD_DATE=${{ github.event.created_at }}
 
       - name: Create GitHub release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/create-release@v1.1.3
         with:
           tag_name: ${{ matrix.version }}
           release_name: JIRA version ${{ matrix.version }}
           body: Docker image for JIRA version ${{ matrix.version }}
           draft: false
           prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}
